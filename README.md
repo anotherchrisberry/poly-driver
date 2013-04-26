@@ -57,7 +57,7 @@ import com.polydriver.spec.PolyDriverGebReportingSpec
 import com.polydriver.driver.PreferredDriver
 import com.polydriver.driver.Driver
 
-@PreferredDriver(['safari, 'chrome' 'phantomJS'])
+@PreferredDriver(['safari', 'chrome' 'phantomJS'])
 class SomeFeatureFunctionalSpec extends PolyDriverGebReportingSpec {
 	// depending on which drivers are configured, will try Safari, then Chrome, then PhantomJS
 	...
