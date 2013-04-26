@@ -1,45 +1,25 @@
 package org.openqa.selenium;
 
-import com.polydriver.driver.Driver;
-
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class PolyDriver implements WebDriver, JavascriptExecutor, TakesScreenshot {
 
     private WebDriver mainDriver;
     private WebDriver currentDriver;
-    private List<WebDriver> alternateDrivers;
+    private Map<String, WebDriver> alternateDrivers;
 
 
-    public void configureDriver(Driver[] drivers) {
+    public void configureDriver(String[] drivers) {
         currentDriver = mainDriver;
-        for (Driver driver : drivers) {
-            if (isAvailable(driver)) {
-                currentDriver = getByDriver(driver);
+        for (String driver : drivers) {
+            if (alternateDrivers != null && alternateDrivers.containsKey(driver)) {
+                currentDriver = alternateDrivers.get(driver);
                 break;
             }
         }
     }
-
-    private WebDriver getByDriver(Driver driver) {
-        if (driver.getDriverClass().isAssignableFrom(mainDriver.getClass()) ) {
-            return mainDriver;
-        }
-        if (alternateDrivers != null) {
-            for (WebDriver webDriver : alternateDrivers) {
-                if (driver.getDriverClass().isAssignableFrom(webDriver.getClass()) ) {
-                    return webDriver;
-                }
-            }
-        }
-        return null;
-    }
-
-    public boolean isAvailable(Driver driver) {
-        return getByDriver(driver) != null;
-    }
-
 
     // setters
 
@@ -48,7 +28,7 @@ public class PolyDriver implements WebDriver, JavascriptExecutor, TakesScreensho
         this.currentDriver = mainDriver;
     }
 
-    public void setAlternateDrivers(List<WebDriver> alternateDrivers) {
+    public void setAlternateDrivers(Map<String, WebDriver> alternateDrivers) {
         this.alternateDrivers = alternateDrivers;
     }
 
@@ -84,7 +64,7 @@ public class PolyDriver implements WebDriver, JavascriptExecutor, TakesScreensho
     }
 
     public void quit() {
-        for (WebDriver driver : alternateDrivers) {
+        for (WebDriver driver : alternateDrivers.values()) {
             driver.quit();
         }
         if (mainDriver != null) {

@@ -4,7 +4,6 @@ grails.project.test.reports.dir = "target/test-reports"
 
 gebVersion = "0.9.0"
 seleniumVersion = "2.32.0"
-phantomJSVersion = "1.0.3"
 
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
@@ -26,17 +25,6 @@ grails.project.dependency.resolution = {
         compile "org.gebish:geb-spock:${gebVersion}"
         compile 'org.spockframework:spock-grails-support:0.7-groovy-2.0'
         compile "org.seleniumhq.selenium:selenium-support:${seleniumVersion}"
-        compile "org.seleniumhq.selenium:selenium-firefox-driver:${seleniumVersion}"
-        compile "org.seleniumhq.selenium:selenium-chrome-driver:${seleniumVersion}"
-        compile "org.seleniumhq.selenium:selenium-ie-driver:${seleniumVersion}"
-        compile "org.seleniumhq.selenium:selenium-remote-driver:${seleniumVersion}"
-        compile "org.seleniumhq.selenium:selenium-safari-driver:${seleniumVersion}"
-        compile "org.seleniumhq.selenium:selenium-android-driver:${seleniumVersion}"
-        compile "org.seleniumhq.selenium:selenium-iphone-driver:${seleniumVersion}"
-        compile "com.github.detro.ghostdriver:phantomjsdriver:${phantomJSVersion}"
-
-        test "org.spockframework:spock-grails-support:0.7-groovy-2.0"
-        test "org.objenesis:objenesis:1.2"
     }
 
     plugins {
