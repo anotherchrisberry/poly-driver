@@ -2,8 +2,10 @@ grails.project.class.dir = "target/classes"
 grails.project.test.class.dir = "target/test-classes"
 grails.project.test.reports.dir = "target/test-reports"
 
-gebVersion = "0.9.0"
-seleniumVersion = "2.32.0"
+gebVersion = "0.9.3"
+seleniumVersion = "2.42.2"
+
+grails.project.dependency.resolver = "maven" // or ivy
 
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
@@ -22,22 +24,16 @@ grails.project.dependency.resolution = {
     }
     dependencies {
 
-        compile "org.gebish:geb-spock:${gebVersion}"
-        compile 'org.spockframework:spock-grails-support:0.7-groovy-2.0'
-        compile "org.seleniumhq.selenium:selenium-support:${seleniumVersion}"
+        compile "org.gebish:geb-spock:$gebVersion"
+        compile "org.seleniumhq.selenium:selenium-support:$seleniumVersion"
     }
 
     plugins {
-        build(":tomcat:$grailsVersion",
-                ":release:2.2.0",
-                ":rest-client-builder:1.0.3") {
-            export = false
-        }
+	    build(':release:3.0.1') {
+		    export = false
+	    }
         compile(":geb:${gebVersion}") {
             export = true
-        }
-        test(':spock:0.7') {
-            exclude "spock-grails-support"
         }
     }
 }
