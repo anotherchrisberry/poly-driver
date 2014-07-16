@@ -1,6 +1,6 @@
 class PolyDriverGrailsPlugin {
 
-    def version = "0.2"
+    def version = "0.3"
 
     def grailsVersion = "2.0 > *"
 
@@ -8,7 +8,7 @@ class PolyDriverGrailsPlugin {
 
     def title = "Poly Driver Plugin"
     def author = "Chris Berry"
-    def authorEmail = "chris.berry@objectpartners.com"
+    def authorEmail = "anotherchrisberry@gmail.com"
     def description = '''\
 Provides the ability to specify a different preferred browser for a specific Geb specification class.
 '''

@@ -35,5 +35,8 @@ grails.project.dependency.resolution = {
         compile(":geb:${gebVersion}") {
             export = true
         }
+        test(':tomcat:7.0.54') {
+            export = false
+        }
     }
 }
